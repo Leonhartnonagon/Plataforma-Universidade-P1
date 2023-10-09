@@ -17,7 +17,7 @@ namespace DDD.Domain.TiContext
         public string Titulo { get; set; }
         public string Descricao { get; set; }
         public bool Resolvido { get; set; }
-        public List<Chamador> Chamador { get; set; }
-        public List<Tecnico>? Tecnico { get; set; } = null;
+        public Chamador Chamador { get; set; }
+        public Tecnico? Tecnico { get; set; }
     }
 }
