@@ -84,6 +84,10 @@ namespace DDD.Infra.SQLServer.Repositories
                 throw ex;
             }
         }
+        //public void AssignTecnico(Chamado camado, int idTecnico)
+        //{
+
+        //}
     }
 }
 

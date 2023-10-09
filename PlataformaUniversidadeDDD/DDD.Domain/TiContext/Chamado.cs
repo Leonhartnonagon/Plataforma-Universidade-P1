@@ -11,7 +11,7 @@ namespace DDD.Domain.TiContext
 {
     public class Chamado
     {
-        public int IdChamado { get; set; }
+        public int Id { get; set; }
         public int IdChamador { get; set; }
         public int? IdTecnico { get; set; }
         public string Titulo { get; set; }

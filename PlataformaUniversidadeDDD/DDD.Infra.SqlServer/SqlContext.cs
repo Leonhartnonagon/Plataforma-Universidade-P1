@@ -21,6 +21,7 @@ namespace DDD.Infra.SQLServer
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //modelBuilder.Entity<Matricula>().HasKey(m => new { m.AlunoId, m.DisciplinaId });
+            //modelBuilder.Entity<Chamado>().HasKey(m => new { m.IdTecnico, m.IdChamador });
 
 
             //Tentei Fazer aqui a relação das entidades Tecnico com Chamado e Chamador com Chamado

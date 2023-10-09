@@ -15,6 +15,7 @@ namespace DDD.Infra.SQLServer.Interfaces
         //public void InsertMatricula(Matricula matricula);
         public Chamado InsertChamado(int idChamador);
         public void UpdateChamado(Chamado chamado);
+        //public void AssignTecnico(Chamado camado, int idTecnico);
         public void DeleteChamado(Chamado chamado);
     }
 }
