@@ -1,6 +1,7 @@
 ﻿using DDD.Domain.SecretariaContext;
 using DDD.Domain.TiContext;
 using DDD.Infra.SQLServer.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,28 +22,36 @@ namespace DDD.Infra.SQLServer.Repositories
 
         public void DeleteChamado(Chamado chamado)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _context.Set<Chamado>().Remove(chamado);
+                _context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
         public Chamado GetChamadoById(int id)
         {
-            throw new NotImplementedException();
+            return _context.Chamados.Find(id);
         }
 
         public List<Chamado> GetChamados()
         {
-            throw new NotImplementedException();
+            return _context.Chamados.ToList();
         }
 
-        public Chamado InsertChamado(int idAluno, int idDisciplina)
+        public Chamado InsertChamado(int idChamador)
         {
-            var aluno = _context.Alunos.First(i => i.UserId == idAluno);
-            var disciplina = _context.Disciplinas.First(i => i.DisciplinaId == idDisciplina);
+            
+            var chamador = _context.Chamadores.First(i => i.UserId == idChamador);
 
             var chamado = new Chamado
             {
-                Aluno = aluno,
-                Disciplina = disciplina
+                Chamador = chamador
             };
 
             try
@@ -63,8 +72,18 @@ namespace DDD.Infra.SQLServer.Repositories
 
         public void UpdateChamado(Chamado chamado)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _context.Entry(chamado).State = EntityState.Modified;
+                _context.SaveChanges();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
     }
 }
-}
+

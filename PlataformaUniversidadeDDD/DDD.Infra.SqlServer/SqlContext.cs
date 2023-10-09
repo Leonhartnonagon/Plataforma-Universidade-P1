@@ -49,6 +49,8 @@ namespace DDD.Infra.SQLServer
             modelBuilder.Entity<User>().UseTpcMappingStrategy();
             modelBuilder.Entity<Aluno>().ToTable("Aluno");
             modelBuilder.Entity<Pesquisador>().ToTable("Pesquisador");
+            modelBuilder.Entity<Tecnico>().ToTable("Tecnico");
+            modelBuilder.Entity<Chamador>().ToTable("Chamador");
             //https://learn.microsoft.com/pt-br/ef/core/modeling/inheritance
         }
 
@@ -58,8 +60,8 @@ namespace DDD.Infra.SQLServer
         public DbSet<User> Users { get; set; }
         public DbSet<Pesquisador> Pesquisadores { get; set; }
         public DbSet<Projeto> Projetos { get; set; }
-        public DbSet<Tecnico> Tecnicos { get; set; }   
         public DbSet<Chamado> Chamados { get; set; }
         public DbSet<Chamador> Chamadores { get; set; }
+        public DbSet<Tecnico> Tecnicos { get; set; }
     }
 }
