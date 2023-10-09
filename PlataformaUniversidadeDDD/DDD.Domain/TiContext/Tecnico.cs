@@ -1,4 +1,5 @@
-﻿using DDD.Domain.UserManagementContext;
+﻿using DDD.Domain.SecretariaContext;
+using DDD.Domain.UserManagementContext;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,5 +10,6 @@ namespace DDD.Domain.TiContext
 {
     public class Tecnico : User
     {
+        public List<Chamado>? Chamados { get; set; }
     }
 }

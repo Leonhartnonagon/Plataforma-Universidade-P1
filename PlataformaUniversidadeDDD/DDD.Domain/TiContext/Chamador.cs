@@ -9,5 +9,6 @@ namespace DDD.Domain.TiContext
 {
     public class Chamador : User
     {
+        public List<Chamado>? Chamados { get; set; }
     }
 }

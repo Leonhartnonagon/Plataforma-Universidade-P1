@@ -1,7 +1,9 @@
 using DDD.Domain.PicContext;
 using DDD.Domain.SecretariaContext;
+using DDD.Domain.TiContext;
 using DDD.Domain.UserManagementContext;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection.Metadata;
 
 namespace DDD.Infra.SQLServer
 {
@@ -19,10 +21,29 @@ namespace DDD.Infra.SQLServer
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //modelBuilder.Entity<Matricula>().HasKey(m => new { m.AlunoId, m.DisciplinaId });
+
+
+            //Tentei Fazer aqui a relação das entidades Tecnico com Chamado e Chamador com Chamado
+
+            modelBuilder.Entity<Tecnico>()
+                .HasMany(c => c.Chamados)
+                .WithOne(c => c.Tecnico)
+                .HasForeignKey(e => e.IdTecnico)
+                .IsRequired(false);
+
+            modelBuilder.Entity<Chamador>()
+                .HasMany(c => c.Chamados)
+                .WithOne(c => c.Chamador)
+                .HasForeignKey(e => e.IdChamador);
+             
+
             modelBuilder.Entity<Aluno>()
                 .HasMany(e => e.Disciplinas)
                 .WithMany(e => e.Alunos)
                 .UsingEntity<Matricula>();
+
+
+            
 
 
             modelBuilder.Entity<User>().UseTpcMappingStrategy();
@@ -37,5 +58,8 @@ namespace DDD.Infra.SQLServer
         public DbSet<User> Users { get; set; }
         public DbSet<Pesquisador> Pesquisadores { get; set; }
         public DbSet<Projeto> Projetos { get; set; }
+        public DbSet<Tecnico> Tecnicos { get; set; }   
+        public DbSet<Chamado> Chamados { get; set; }
+        public DbSet<Chamador> Chamadores { get; set; }
     }
 }

@@ -12,6 +12,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<IAlunoRepository, AlunoRepositorySqlServer>();
 builder.Services.AddScoped<IDisciplinaRepository, DisciplinaRepositorySqlServer>();
 builder.Services.AddScoped<IMatriculaRepository, MatriculaRepositorySqlServer>();
+builder.Services.AddScoped<ITecnicoRepository, TecnicoRepositorySqlServer>();
+builder.Services.AddScoped<IChamadoRepository, ChamadoRepositorySqlServer>();
+builder.Services.AddScoped<IChamadorRepository, ChamadorRepositorySqlServer>();
 builder.Services.AddScoped<SqlContext, SqlContext>();
 
 builder.Services.AddControllers().AddJsonOptions(x =>
