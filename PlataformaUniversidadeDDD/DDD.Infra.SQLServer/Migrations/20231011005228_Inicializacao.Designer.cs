@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DDD.Infra.SQLServer.Migrations
 {
     [DbContext(typeof(SqlContext))]
-    [Migration("20231009223612_Inicializacao")]
+    [Migration("20231011005228_Inicializacao")]
     partial class Inicializacao
     {
         /// <inheritdoc />
@@ -123,7 +123,7 @@ namespace DDD.Infra.SQLServer.Migrations
                     b.Property<int>("IdChamador")
                         .HasColumnType("int");
 
-                    b.Property<int?>("IdTecnico")
+                    b.Property<int>("IdTecnico")
                         .HasColumnType("int");
 
                     b.Property<bool>("Resolvido")
@@ -252,7 +252,9 @@ namespace DDD.Infra.SQLServer.Migrations
 
                     b.HasOne("DDD.Domain.TiContext.Tecnico", "Tecnico")
                         .WithMany("Chamados")
-                        .HasForeignKey("IdTecnico");
+                        .HasForeignKey("IdTecnico")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Chamador");
 

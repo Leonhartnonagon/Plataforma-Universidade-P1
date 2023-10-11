@@ -13,11 +13,11 @@ namespace DDD.Domain.TiContext
     {
         public int Id { get; set; }
         public int IdChamador { get; set; }
-        public int? IdTecnico { get; set; }
+        public int IdTecnico { get; set; }
         public string Titulo { get; set; }
         public string Descricao { get; set; }
         public bool Resolvido { get; set; }
         public Chamador Chamador { get; set; }
-        public Tecnico? Tecnico { get; set; }
+        public Tecnico Tecnico { get; set; }
     }
 }

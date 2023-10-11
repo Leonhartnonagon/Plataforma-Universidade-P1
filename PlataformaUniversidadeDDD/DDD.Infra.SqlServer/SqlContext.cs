@@ -29,8 +29,8 @@ namespace DDD.Infra.SQLServer
             modelBuilder.Entity<Tecnico>()
                 .HasMany(c => c.Chamados)
                 .WithOne(c => c.Tecnico)
-                .HasForeignKey(e => e.IdTecnico)
-                .IsRequired(false);
+                .HasForeignKey(e => e.IdTecnico);
+          
 
             modelBuilder.Entity<Chamador>()
                 .HasMany(c => c.Chamados)

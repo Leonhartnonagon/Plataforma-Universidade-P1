@@ -13,19 +13,19 @@ namespace DDD.Application.Api.Controllers
             _chamadorRepository = chamadorRepository;
         }
 
-        [HttpGet]
+        [HttpGet("chamador/")]
         public ActionResult<List<Chamador>> Get()
         {
             return Ok(_chamadorRepository.GetChamadores());
         }
 
-        [HttpGet("{id}")]
-        public ActionResult<Chamador> GetById(int id)
+        [HttpGet("chamador/{id}")]
+        public ActionResult<Chamador> GetChamadorById(int id)
         {
             return Ok(_chamadorRepository.GetChamadorById(id));
         }
 
-        [HttpPost]
+        [HttpPost("chamador/")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public ActionResult<Chamador> CreateChamador(Chamador chamador)
@@ -35,10 +35,10 @@ namespace DDD.Application.Api.Controllers
                 return BadRequest("Nome deve ser maior que 3 e menor que 30 caracteres.");
             }
             _chamadorRepository.InsertChamador(chamador);
-            return CreatedAtAction(nameof(GetById), new { id = chamador.UserId }, chamador);
+            return CreatedAtAction(nameof(GetChamadorById), new { id = chamador.UserId }, chamador);
         }
 
-        [HttpPut]
+        [HttpPut("chamador/")]
         public ActionResult Put([FromBody] Chamador chamador)
         {
             try
@@ -56,7 +56,7 @@ namespace DDD.Application.Api.Controllers
             }
         }
 
-        [HttpDelete()]
+        [HttpDelete("chamador/")]
         public ActionResult Delete([FromBody] Chamador chamador)
         {
             try

@@ -44,30 +44,20 @@ namespace DDD.Infra.SQLServer.Repositories
             return _context.Chamados.ToList();
         }
 
-        public Chamado InsertChamado(int idChamador)
+        public void InsertChamado(Chamado chamado)
         {
-            
-            var chamador = _context.Chamadores.First(i => i.UserId == idChamador);
-
-            var chamado = new Chamado
-            {
-                Chamador = chamador
-            };
 
             try
             {
-
-                _context.Add(chamado);
+                _context.Chamados.Add(chamado);
                 _context.SaveChanges();
-
             }
             catch (Exception ex)
             {
-                var msg = ex.InnerException;
-                throw;
+                //log exception
+
             }
 
-            return chamado;
         }
 
         public void UpdateChamado(Chamado chamado)

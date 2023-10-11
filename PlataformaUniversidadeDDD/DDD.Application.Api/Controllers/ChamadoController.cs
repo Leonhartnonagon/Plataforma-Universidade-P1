@@ -15,28 +15,28 @@ namespace DDD.Application.Api.Controllers
             _chamadoRepository = chamadoRepository;
         }
 
-        [HttpGet]
+        [HttpGet("chamado/")]
         public ActionResult<List<Chamado>> Get()
         {
             return Ok(_chamadoRepository.GetChamados());
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("chamado/{id}")]
         public ActionResult<Chamado> GetById(int id)
         {
             return Ok(_chamadoRepository.GetChamadoById(id));
         }
 
-        [HttpPost]
+        [HttpPost("chamado/")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public ActionResult<Chamado> CreateChamado(int idChamador)
+        public ActionResult<Chamado> CreateChamado([FromBody]Chamado chamado)
         {
-            Chamado chamadoIdSaved = _chamadoRepository.InsertChamado(idChamador);
-            return CreatedAtAction(nameof(GetById), new { id = chamadoIdSaved.Id }, chamadoIdSaved);
+            _chamadoRepository.InsertChamado(chamado);
+            return CreatedAtAction(nameof(GetById), new { id = chamado.Id }, chamado);
         }
 
-        [HttpPut]
+        [HttpPut("chamado/")]
         public ActionResult Put([FromBody] Chamado chamado)
         {
             try
@@ -77,7 +77,7 @@ namespace DDD.Application.Api.Controllers
     //        }
     //    }
 
-        [HttpDelete()]
+        [HttpDelete("chamado/")]
         public ActionResult Delete([FromBody] Chamado chamado)
         {
             try

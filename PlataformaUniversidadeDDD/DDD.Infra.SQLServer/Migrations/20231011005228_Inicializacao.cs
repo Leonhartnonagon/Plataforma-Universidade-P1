@@ -158,7 +158,7 @@ namespace DDD.Infra.SQLServer.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     IdChamador = table.Column<int>(type: "int", nullable: false),
-                    IdTecnico = table.Column<int>(type: "int", nullable: true),
+                    IdTecnico = table.Column<int>(type: "int", nullable: false),
                     Titulo = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Descricao = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Resolvido = table.Column<bool>(type: "bit", nullable: false)
@@ -176,7 +176,8 @@ namespace DDD.Infra.SQLServer.Migrations
                         name: "FK_Chamados_Tecnico_IdTecnico",
                         column: x => x.IdTecnico,
                         principalTable: "Tecnico",
-                        principalColumn: "UserId");
+                        principalColumn: "UserId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(

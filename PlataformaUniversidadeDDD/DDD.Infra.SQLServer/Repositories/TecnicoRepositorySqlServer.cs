@@ -42,7 +42,7 @@ namespace DDD.Infra.SQLServer.Repositories
 
         public List<Tecnico> GetTecnicos()
         {
-            //return  _context.Tecnicos.Include(x => x.Disciplinas).ToList();
+            
             return _context.Tecnicos.ToList();
 
         }

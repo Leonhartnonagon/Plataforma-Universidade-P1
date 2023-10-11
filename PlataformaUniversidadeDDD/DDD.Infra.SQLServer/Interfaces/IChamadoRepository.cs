@@ -13,7 +13,7 @@ namespace DDD.Infra.SQLServer.Interfaces
         public List<Chamado> GetChamados();
         public Chamado GetChamadoById(int id);
         //public void InsertMatricula(Matricula matricula);
-        public Chamado InsertChamado(int idChamador);
+        public void InsertChamado(Chamado chamado);
         public void UpdateChamado(Chamado chamado);
         //public void AssignTecnico(Chamado camado, int idTecnico);
         public void DeleteChamado(Chamado chamado);
